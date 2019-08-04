@@ -8,7 +8,7 @@ export default class Func extends Component {
         data: [],
         image: null,
         isLoaded: false,
-        isError:false,
+        isError: false,
         description: null,
     };
 
@@ -16,31 +16,33 @@ export default class Func extends Component {
         this.setState({username: event.target.value});
     };
     handelSubmit = (event) => {
-        {this.setState({isError:false})}
+        {
+            this.setState({isError: false})
+        }
         event.preventDefault();
         const url = `https://api.coingecko.com/api/v3/coins/${this.state.username}`;
         fetch(url)
             .then(response => {
                 if (response.ok) {
                     response.json()
-                .then(data => this.setState({
-                        data,
-                        image: data.image.large,
-                        description: data.description.en,
-                        isLoaded: true,
-                    }), )
+                        .then(data => this.setState({
+                            data,
+                            image: data.image.large,
+                            description: data.description.en,
+                            isLoaded: true,
+                        }),)
                 } else {
-                    this.setState({isError:true});
+                    this.setState({isError: true});
                     throw Error(`Request rejected with status ${response.status}`);
                 }
             })
-            .catch(e=>console.log(e));
+            .catch(e => console.log(e));
         console.log(this.state.data);
     };
 
     render() {
         const isLoaded = this.state.isLoaded;
-        let isError=this.state.isError;
+        let isError = this.state.isError;
         return (
             <React.Fragment>
                 {(() => {
@@ -84,11 +86,11 @@ export default class Func extends Component {
                                                     origin: </b><span>{this.state.data.country_origin}</span></p>
                                                 <h5 className="mt-2"><b>Date of
                                                     appearance: </b><span>{this.state.data.genesis_date}</span></h5>
-                                                 <h5 className="mt-2"><b>Market cap
+                                                <h5 className="mt-2"><b>Market cap
                                                     Rank: </b><span>{this.state.data.market_cap_rank}</span></h5>
                                                 <h5 className="mt-2"><b>Coin Gecko
                                                     Rank:</b> <span>{this.state.data.coingecko_score}</span></h5>
-                                                 <h5 className="mt-2"><b>Coin Gecko
+                                                <h5 className="mt-2"><b>Coin Gecko
                                                     Score:</b> <span>{this.state.data.coingecko_score}</span></h5>
                                                 <h5 className="mt-2"><b>Developer
                                                     Score: </b><span>{this.state.data.developer_score}</span></h5>
@@ -102,8 +104,8 @@ export default class Func extends Component {
 
                                         </div>
                                         <div className="col-md-10">
-                                            <Markup style={{fontFamily:'Verdana'}} content=
-                                                        {this.state.description}
+                                            <Markup style={{fontFamily: 'Verdana'}} content=
+                                                {this.state.description}
                                             />
 
                                         </div>
@@ -111,8 +113,7 @@ export default class Func extends Component {
                                 </div>
                             </div>
                         )
-                    }
-                    else if (isError) {
+                    } else if (isError) {
                         return (
                             <div className="container">
                                 <h3 className="text-center mt-4">Crypto-Wiki</h3>
@@ -124,7 +125,7 @@ export default class Func extends Component {
                                 </form>
                                 <span>Search for a Coin</span><br/>
                                 <div className="alert alert-danger" role="alert">
-                                   Opps! maybe in future its avaliable!!!
+                                    Opps! maybe in future its avaliable!!!
                                 </div>
 
                             </div>

@@ -1,4 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## To install node dependencies head to  project folder and run in admin prvilage
+### `npm i`
 
 ## Available Scripts
 
