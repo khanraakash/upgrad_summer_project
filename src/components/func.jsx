@@ -125,7 +125,7 @@ export default class Func extends Component {
                                 </form>
                                 <span>Search for a Coin</span><br/>
                                 <div className="alert alert-danger" role="alert">
-                                    Opps! maybe in future its avaliable!!!
+                                    Opps! the coin name in production...or Lost in space !!!
                                 </div>
 
                             </div>
